@@ -120,3 +120,7 @@ body {
 #panorama {
   flex-grow: 1;
 }
+/* Untuk merapikan semua paragraf di halaman artikel */
+.paragraf-artikel {
+  text-align: justify;
+}
