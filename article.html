@@ -374,7 +374,7 @@
                 try {
                     pannellum.viewer('mini-panorama', {
                         type: 'equirectangular',
-                        panorama: '../assetes/360_images/image0.jpg', // Ganti dengan path gambar 360° Anda
+                        panorama: 'assetes/360_images/image0.jpg', // Ganti dengan path gambar 360° Anda
                         autoLoad: true,
                         showZoomCtrl: false,
                         compass: false,
@@ -385,7 +385,7 @@
                 } catch (e) {
                     // Tampilkan pesan error jika Pannellum gagal dimuat (misal file tidak ditemukan)
                     console.error("Gagal memuat panorama viewer:", e);
-                    panoramaElement.innerHTML = "<p style='color: var(--color-text-muted); text-align: center; padding-top: 150px;'><em>Panorama viewer tidak dapat dimuat. Pastikan file `panos/image0.jpg` tersedia.</em></p>";
+                    panoramaElement.innerHTML = "<p style='color: var(--color-text-muted); text-align: center; padding-top: 150px;'><em>Panorama viewer tidak dapat dimuat. Pastikan file `assetes/360_images/image0.jpg` tersedia.</em></p>";
                 }
             }
         });
