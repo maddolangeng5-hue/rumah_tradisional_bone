@@ -1,0 +1,59 @@
+/* math.css — styles for Buku Petunjuk (Matematika & Proyeksi) */
+:root{
+  /* slightly brighter, high-contrast palette */
+  --bg:#0f2230;          /* page background — a bit lighter */
+  --panel:#162a38;       /* panels / hero background */
+  --muted:#b3c4cd;       /* muted paragraph color (brighter) */
+  --accent:#2dd4f5;      /* brighter accent */
+  --card:#112935;        /* card base color */
+  --glass: rgba(255,255,255,0.05);
+}
+
+/* Light theme overrides: applied when <body> has class .light-theme */
+body.light-theme {
+  --bg: #f6f9fb;
+  --panel: #ffffff;
+  --muted: #55626a;
+  --accent: #0ea5b7; /* teal */
+  --card: #ffffff;
+  --glass: rgba(2,6,23,0.03);
+  color: #0b1b23;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--color-text, #eaf6ff)}
+.container{max-width:1100px;margin:28px auto;padding:20px}
+.hero{background:linear-gradient(180deg, rgba(22,42,56,0.9), rgba(12,20,28,0.9));padding:36px;border-radius:14px;display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:center;box-shadow: 0 8px 30px rgba(3,10,18,0.45)}
+.hero h1{margin:0;font-size:28px}
+.hero p{margin:8px 0;color:var(--muted)}
+.hero .cta{display:flex;gap:10px}
+.btn{background:var(--accent);color:#012226;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:800;box-shadow:0 6px 18px rgba(45,212,245,0.12)}
+
+/* Light-theme button contrast */
+body.light-theme .btn{color:#ffffff; box-shadow:0 6px 18px rgba(14,165,233,0.12)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.card{background:linear-gradient(180deg, rgba(17,41,53,0.88), rgba(12,28,40,0.85));border:1px solid rgba(255,255,255,0.04);padding:18px;border-radius:12px;box-shadow: 0 6px 20px rgba(3,9,14,0.45)}
+
+body.light-theme .card{background:var(--card);border:1px solid rgba(2,6,23,0.06);box-shadow:none}
+.card h3{margin:0 0 8px}
+.card p{color:var(--muted);margin:0}
+.full{grid-column:1/-1}
+.section{margin-top:26px}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+.calc-row{display:flex;gap:8px;align-items:center;margin-top:10px}
+.input{background:var(--glass);border:1px solid rgba(255,255,255,0.08);padding:8px;border-radius:8px;color:#001b22}
+body.light-theme .input{color:#0b1b23;border:1px solid rgba(2,6,23,0.08);background:rgba(2,6,23,0.02)}
+.result{margin-top:10px;padding:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));border-radius:8px;color:var(--muted)}
+body.light-theme .result{background:rgba(2,6,23,0.03);color:var(--muted)}
+.diagram{display:flex;justify-content:center;padding:18px}
+.diagram svg{max-width:100%;height:auto}
+.gallery{display:flex;gap:10px;flex-wrap:wrap}
+.thumb{width:calc(33.333% - 6.66px);border-radius:8px;overflow:hidden}
+.thumb img{width:100%;height:120px;object-fit:cover;display:block}
+.note{color:var(--muted);font-size:0.95em}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.thumb{width:calc(50% - 5px)} }
+@media(max-width:520px){.grid{grid-template-columns:1fr}.thumb{width:100%}.hero{padding:20px} }
+/* subtle glass footer */
+.footer{margin-top:28px;text-align:center;color:var(--muted);font-size:0.9em}
+
+/* small interactive hotspot style */
+.hotspot{display:inline-block;background:#123944;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.06);color:#e6f7fb}
