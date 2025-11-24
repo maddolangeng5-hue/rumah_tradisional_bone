@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Bola Soba</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root{ --page-bg-1:#071226; --page-bg-2:#021018; --accent:#13c2ff; --muted:rgba(230,238,243,0.6); --text:#e6eef3 }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--page-bg-1),var(--page-bg-2));color:var(--text)}
+    .top-bar{max-width:1100px;margin:18px auto;display:flex;align-items:center;gap:12px;padding:8px 16px;box-sizing:border-box}
+    .go-home{color:var(--text);text-decoration:none;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.06);background:transparent;font-weight:600}
+    .page-title{flex:1;text-align:center;margin:0;font-size:18px;font-weight:700;color:var(--text)}
+    .top-bar__actions{display:flex;align-items:center}
+    .minimap-btn{background:var(--accent);color:#042033;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:0 8px 20px rgba(19,194,255,0.08)}
+
+    .video-page{max-width:1100px;margin:0 auto;padding:18px}
+    .video-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:18px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 20px 60px rgba(2,6,23,0.6);display:flex;flex-direction:column;align-items:center}
+    .video-frame{width:100%;display:flex;justify-content:center}
+    .video-frame iframe{width:100%;max-width:920px;height:520px;border-radius:14px;border:0}
+    .video-caption{max-width:920px;color:var(--muted);margin-top:12px;font-size:13px;text-align:center}
+
+    @media(max-width:900px){ .video-frame iframe{max-width:720px;height:420px} .video-card{padding:14px} }
+    @media(max-width:480px){ .top-bar{padding:12px 10px} .page-title{font-size:15px} .video-frame iframe{height:300px} .video-card{border-radius:12px} }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="index.html" class="go-home">← Kembali ke Beranda</a>
+    <h3 class="page-title">Video Bola Soba Rumah Adat Baruga</h3>
+    <div class="top-bar__actions">
+      <a class="minimap-btn" href="https://youtu.be/RwrsEWCig_k?si=bQd-SbtQSEK86hV-" target="_blank" rel="noopener noreferrer">Buka di YouTube</a>
+    </div>
+  </div>
+
+  <main class="video-page">
+    <section class="video-card">
+      <div class="video-frame">
+        <iframe id="ytplayer"
+          src="https://www.youtube-nocookie.com/embed/RwrsEWCig_k"
+          title="Video Bola Soba"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+        <!-- fallback if embed is blocked: shows thumbnail linking to YouTube -->
+        <div id="videoFallback" style="display:none;max-width:920px;width:100%;text-align:center;margin-top:12px">
+          <a id="fallbackLink" href="https://youtu.be/RwrsEWCig_k" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-decoration:none;color:inherit">
+            <div style="position:relative;display:inline-block;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)">
+              <img src="https://img.youtube.com/vi/RwrsEWCig_k/hqdefault.jpg" alt="Video thumbnail" style="display:block;width:100%;height:auto;max-width:920px;">
+              <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--accent);color:#042033;padding:12px 16px;border-radius:999px;font-weight:700;box-shadow:0 8px 20px rgba(19,194,255,0.12)">Tonton di YouTube</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <p class="video-caption">Tonton dokumentasi singkat Rumah Adat Bone untuk melihat detail eksterior, interior, dan konteks budaya dalam satu video.</p>
+      <p style="max-width:920px;color:var(--muted);font-size:13px;text-align:center;margin-top:8px">Jika video tidak muncul karena pengaturan privasi atau pemblokiran, klik tombol <strong>"Buka di YouTube"</strong> di atas atau gunakan gambar pratinjau untuk membuka video di YouTube.</p>
+    </section>
+  </main>
+  <script>
+    // Detect if iframe failed to load (blocked by browser/privacy). If so, show fallback thumbnail.
+    (function(){
+      const iframe = document.getElementById('ytplayer');
+      const fallback = document.getElementById('videoFallback');
+      let loaded = false;
+      if(!iframe) return;
+      iframe.addEventListener('load', ()=>{ loaded = true; });
+      setTimeout(()=>{
+        if(!loaded){
+          try{ // try accessing cross-origin; will throw if inaccessible
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            loaded = true;
+          }catch(e){ /* blocked */ }
+        }
+        if(!loaded){ iframe.style.display = 'none'; fallback.style.display = 'block'; }
+      }, 2000);
+    })();
+  </script>
+</body>
+</html>
