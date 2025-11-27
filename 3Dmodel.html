@@ -90,13 +90,13 @@
   <!-- Tombol kiri atas -->
   <button class="back-button" onclick="window.location.href='index.html'">← Kembali</button>
 
-  <h1>3D Model Rumah Adat Balla Lompoa</h1>
+  <h1>3D Model Rumah Adat Bone</h1>
 
   <div class="model-container">
     <!-- Ganti src dengan path model GLB kamu -->
     <model-viewer 
-      src="assets/model/3d.glb" 
-      alt="Model 3D Balla Lompoa"
+      src="3d/rumah.glb" 
+      alt="Model 3D Rumah Adat Bone"
       camera-controls 
       auto-rotate 
       shadow-intensity="1"
@@ -105,10 +105,22 @@
     </model-viewer>
   </div>
 
+  <div id="modelMessage" style="width:90%;max-width:700px;text-align:center;color:#f5c6a5;margin-top:8px;display:none">Memuat model...</div>
+
+  <script>
+    const mv = document.querySelector('model-viewer');
+    const msg = document.getElementById('modelMessage');
+    if(mv){
+      msg.style.display = 'block';
+      mv.addEventListener('load', ()=>{ msg.style.display = 'none'; });
+      mv.addEventListener('error', (e)=>{ msg.style.display = 'block'; msg.textContent = 'Gagal memuat model. Klik tombol "Buka di tab baru" untuk melihat model atau periksa path file.'; console.error('model-viewer error', e); });
+    }
+  </script>
+
 
 <p style="width: 90%; max-width: 700px; text-align: justify; line-height: 1.7; color: #cfcfcf; margin-top: 10px;">
   Model 3D Rumah Adat Bone ini memungkinkan kamu untuk mengamati struktur bangunannya secara detail.
-  Setiap sudut dan bentuk arsitekturnya mencerminkan nilai historis dan budaya masyarakat Gowa. 
+  Setiap sudut dan bentuk arsitekturnya mencerminkan nilai historis dan budaya masyarakat Bone. 
   Dengan fitur rotasi dan zoom, kamu dapat menelusuri konstruksi atap, tiang penyangga, hingga tata ruang 
   yang menjadi ciri khas rumah adat ini.
 </p>
